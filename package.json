@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "tsx watch src/index.ts"
+    "dev": "tsx watch -r tsconfig-paths/register src/index.ts"
   },
   "keywords": [],
   "author": "",
@@ -16,6 +16,7 @@
     "eslint": "^9.6.0",
     "globals": "^15.8.0",
     "prettier": "^3.3.2",
+    "tsconfig-paths": "^4.2.0",
     "tsx": "^4.16.2",
     "typescript": "^5.5.3",
     "typescript-eslint": "^7.15.0"
