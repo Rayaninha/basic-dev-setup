@@ -8,7 +8,6 @@ on:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     strategy:
@@ -24,6 +23,10 @@ jobs:
         cache: 'pnpm'
     - name: Install pnpm
       run: npm install -g pnpm
+    - name: Add npm global bin to PATH
+      run: echo "$(npm bin -g)" >> $GITHUB_PATH
+    - name: Verify pnpm installation
+      run: pnpm --version
     - name: Install dependencies
       run: pnpm install
     - name: Build
