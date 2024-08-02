@@ -17,11 +17,18 @@ jobs:
       with:
         version: 6.32.9
 
-    - uses: actions/setup-node@v3
+    - name: Set up Node.js
+      uses: actions/setup-node@v4
       with:
         node-version: '20.x'
-        cache: 'pnpm'
-        cache-dependency-path: 'pnpm-lock.yaml'
+
+    - name: Cache PNPM store
+      uses: actions/cache@v3
+      with:
+        path: ~/.pnpm-store
+        key: ${{ runner.OS }}-pnpm-cache-${{ hashFiles('pnpm-lock.yaml') }}
+        restore-keys: |
+          ${{ runner.OS }}-pnpm-cache-
         
     - name: Install PNPM
       run: npm install -g pnpm
